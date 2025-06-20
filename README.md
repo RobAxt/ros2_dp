@@ -127,6 +127,15 @@ dp_loose.xacro libera al robot de la junta fija a world. Esto podría ser útil 
 
 
 ----------------------------------------------------
-source /entrypoint.sh
-colcon build
-ros2 launch dp dp_sim.launch.py  world_name:=dp_escritorio.world
+## Ultima Clase - Ayuda memoria
+```bash
+# xhost + && docker compose up dp_dev --force-recreate 
+# xhost + && docker exec -it docker-dp_dev-1 /bin/bash
+# source /entrypoint.sh
+# colcon build
+# ros2 launch dp dp_sim.launch.py world_name:=dp_escritorio.world 
+# ros2 launch dp dp_sim.launch.py 
+
+# ros2 topic echo /joint_states
+```
+
