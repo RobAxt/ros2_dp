@@ -40,12 +40,26 @@
   <xacro:property name="izz2" value="${(1.0/12.0) * mass2 * (length2 * length2 + width2 * width2) + Jm2_ef}"/> <!-- super simplificación a fines didácticos -->
   <xacro:property name="iyy2" value="${izz2}"/>        
 
-
+ <!-- Parámetros del eslabón 3. Prisma de sección cuadrada y centro de masa en el centro -->
+  <xacro:property name="mass3" value="1.5"/>                    <!-- masa de la barra que modela el eslabón -->
+  <xacro:property name="length3" value="0.22"/>                 <!-- largo total -->
+  <xacro:property name="width3" value="0.02"/>                  <!-- ancho de la sección total -->
+  <xacro:property name="a3" value="${length3 - width3}"/>       <!-- distancia entre ejes -->
+  <xacro:property name="Jm3" value="0.0001"/>                   <!-- inercia del rotor del motor -->
+  <xacro:property name="N3"  value="10"/>                       <!-- relación de transmisión -->
+  <xacro:property name="Jm3_ef" value="${N3*N3 * Jm3}"/>        <!-- inercia del rotor reflejada al eje -->
+  
+  <!-- Calculo de la inercia de una barra (con motor en eje de rotación) para orientación a lo largo del eje X -->
+  <xacro:property name="ixx3" value="${(1.0/6.0) * mass3 * (width3 * width3)}"/>
+  <xacro:property name="izz3" value="${(1.0/12.0) * mass3 * (length3 * length3 + width3 * width3) + Jm3_ef}"/> <!-- super simplificación a fines didácticos -->
+  <xacro:property name="iyy3" value="${izz3}"/>   
   <!-- Valores que pueden modificarse en otros archivos xacro y que funcionan como argumentos -->
   <xacro:arg name="damping1" default="0.1"/>                 <!-- rozamiento viscoso -->  
   <xacro:arg name="friction1" default="0.01"/>               <!-- rozamiento de Coulomb -->  
   <xacro:arg name="damping2" default="0.1"/>                 <!-- rozamiento viscoso -->  
   <xacro:arg name="friction2" default="0.01"/>               <!-- rozamiento de Coulomb -->  
+  <xacro:arg name="damping3" default="0.1"/>                 <!-- rozamiento viscoso -->  
+  <xacro:arg name="friction3" default="0.01"/>               <!-- rozamiento de Coulomb -->  
 
   <xacro:arg name="q1_max" default="3.14"/>                  <!-- límite físico superior eje 1 -->
   <xacro:arg name="q1_min" default="-3.14"/>                 <!-- límite físico inferior eje 1 -->  
@@ -55,8 +69,14 @@
   <xacro:arg name="q2_min" default="-3.14"/>                 <!-- límite físico inferior eje 2 -->  
   <xacro:arg name="qp2_max" default="5.0"/>                  <!-- límite físico velocidad eje 2 -->  
   <xacro:arg name="tau2_max" default="100.0"/>               <!-- límite físico del esfuerzo aplicable en eje 2 -->    
+  <xacro:arg name="q3_max" default="3.14"/>                  <!-- límite físico superior eje 3 -->
+  <xacro:arg name="q3_min" default="-3.14"/>                 <!-- límite físico inferior eje 3 -->  
+  <xacro:arg name="qp3_max" default="5.0"/>                  <!-- límite físico velocidad eje 3 -->  
+  <xacro:arg name="tau3_max" default="100.0"/>               <!-- límite físico del esfuerzo aplicable en eje 3 -->    
+
 
   <xacro:arg name="q1_ini" default="1.0"/>                   <!-- condición inicial de posición -->    
   <xacro:arg name="q2_ini" default="1.0"/>                   <!-- condición inicial de posición -->    
+  <xacro:arg name="q3_ini" default="1.0"/>                   <!-- condición inicial de posición -->   
 </robot>
 

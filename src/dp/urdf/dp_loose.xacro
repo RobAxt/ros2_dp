@@ -6,8 +6,9 @@
   <xacro:arg name="q1_min" default="-3140.0"/>                 <!-- límite físico inferior eje 1 -->  
   <xacro:arg name="q2_max" default="3140.0"/>                  <!-- límite físico superior eje 2 -->
   <xacro:arg name="q2_min" default="-3140.0"/>                 <!-- límite físico inferior eje 2 -->  
-
-  <xacro:arg name="dp_fixed" default="false"/>  
+  <xacro:arg name="q3_max" default="3140.0"/>                  <!-- límite físico superior eje 2 -->
+  <xacro:arg name="q3_min" default="-3140.0"/>                 <!-- límite físico inferior eje 2 -->  
+  <xacro:arg name="dp_fixed" default="true"/>  
 
   <!-- Incluir el modelo base -->
   <xacro:include filename="$(find dp)/urdf/dp_base.xacro"/>

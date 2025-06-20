@@ -11,6 +11,7 @@ position_controller:
     joints:
       - joint1
       - joint2
+      - joint3
     #interface_name: effort  # Importante: actúa con torques
     command_interfaces:
       - effort
@@ -19,15 +20,21 @@ position_controller:
       - velocity
     gains:
       joint1:
-        p: 36.0  # Por Zn
-        i: 276.0
-        d: 1.95
+        p: 15.0  # Por Zn
+        i: 1.0
+        d: 2.0
         i_clamp: 15.0
         antiwindup: true
       joint2:
-        p: 36.0   # Por ZN
-        i: 570.0
-        d: 0.95
+        p: 15.0   # Por ZN
+        i: 1.0
+        d: 2.0
+        i_clamp: 15.0
+        antiwindup: true
+      joint3:
+        p: 15.0   # Por ZN
+        i: 1.0
+        d: 2.0
         i_clamp: 15.0
         antiwindup: true
         
@@ -37,5 +44,6 @@ effort_controller:
     joints:
       - joint1
       - joint2
+      - joint3
     interface_name: effort
 

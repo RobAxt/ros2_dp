@@ -6,6 +6,9 @@
   <xacro:arg name="friction1" default="0.000001"/>             <!-- rozamiento de Coulomb -->  
   <xacro:arg name="damping2" default="0.000001"/>              <!-- rozamiento viscoso -->  
   <xacro:arg name="friction2" default="0.000001"/>             <!-- rozamiento de Coulomb -->  
+  <xacro:arg name="damping3" default="0.000001"/>              <!-- rozamiento viscoso -->  
+  <xacro:arg name="friction3" default="0.000001"/>             <!-- rozamiento de Coulomb -->  
+
 
   <xacro:arg name="q1_max" default="3140.0"/>                  <!-- límite físico superior eje 1 -->
   <xacro:arg name="q1_min" default="-3140.0"/>                 <!-- límite físico inferior eje 1 -->  
@@ -15,9 +18,15 @@
   <xacro:arg name="q2_min" default="-3140.0"/>                 <!-- límite físico inferior eje 2 -->  
   <xacro:arg name="qp2_max" default="500.0"/>                  <!-- límite físico velocidad eje 2 -->  
   <xacro:arg name="tau2_max" default="10000.0"/>               <!-- límite físico del esfuerzo aplicable en eje 2 -->    
+  <xacro:arg name="q3_max" default="3140.0"/>                  <!-- límite físico superior eje 3 -->
+  <xacro:arg name="q23min" default="-3140.0"/>                 <!-- límite físico inferior eje 3 -->  
+  <xacro:arg name="qp3_max" default="500.0"/>                  <!-- límite físico velocidad eje 3 -->  
+  <xacro:arg name="tau3_max" default="10000.0"/>               <!-- límite físico del esfuerzo aplicable en eje 3 -->    
+
 
   <xacro:arg name="q1_ini" default="1.0"/>                     <!-- condición inicial de posición -->    
   <xacro:arg name="q2_ini" default="1.0"/>                     <!-- condición inicial de posición -->    
+  <xacro:arg name="q3_ini" default="1.0"/>                     <!-- condición inicial de posición -->    
 
   <!-- Incluir el modelo base -->
   <xacro:include filename="$(find dp)/urdf/dp_base.xacro"/>

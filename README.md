@@ -124,3 +124,9 @@ Luego dp_base.xacro importa los parámetros para definir el robot junto con los 
 dp_caos.xacro redefine los valores de los rozamiento y los topes de los ejes.
 
 dp_loose.xacro libera al robot de la junta fija a world. Esto podría ser útil para un robót móvil aunque, pero no para un manipulador.
+
+
+----------------------------------------------------
+source /entrypoint.sh
+colcon build
+ros2 launch dp dp_sim.launch.py  world_name:=dp_escritorio.world

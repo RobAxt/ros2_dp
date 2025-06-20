@@ -18,7 +18,8 @@ MAX_SLIDER_VALUE = 1000
 class GainControllerGUI(Node):
     node_name = '/position_controller'  
     param_names = ['gains.joint1.p', 'gains.joint1.d', 'gains.joint1.i',
-        'gains.joint2.p', 'gains.joint2.d', 'gains.joint2.i']
+        'gains.joint2.p', 'gains.joint2.d', 'gains.joint2.i',
+         'gains.joint3.p', 'gains.joint3.d', 'gains.joint3.i']
 
     def __init__(self):
         super().__init__('gain_controller_gui')

@@ -92,6 +92,31 @@
       </collision>
   </link>
   
+  <!-- Tercer eslabón -->
+  <!-- La terna 3 está en la entrada del eslabón => DH proximal  -->
+  <link name="link3">
+      <inertial>
+          <origin xyz="${a3/2.0} 0 0"/>
+          <mass value="${mass3}"/>
+          <inertia ixx="${ixx3}" ixy="0.0" ixz="0.0" iyy="${iyy3}" iyz="0.0" izz="${izz3}"/>
+      </inertial>
+      <visual>
+          <origin xyz="${a3/2.0} 0 0"/>
+          <geometry>
+              <box size="${length3} ${width3} ${width3}"/>
+          </geometry>
+          <material name="green">
+              <color rgba="0 1 0 1"/>
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="${a3/2.0} 0 0"/>
+          <geometry>
+              <box size="${length3} ${width3} ${width3}"/>
+          </geometry>
+      </collision>
+  </link>
+
   <!--******************* DEFINICIONES DE JUNTAS  *******************-->  
   <!-- Junta entre base y link1 -->
   <joint name="joint1" type="revolute">
@@ -107,16 +132,26 @@
   <joint name="joint2" type="revolute">
       <parent link="link1"/>
       <child link="link2"/>
-      <origin xyz="${a1} 0 ${width1}" rpy="0 0 0"/>
+      <origin xyz="${a2} 0 ${width2}" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="$(arg tau2_max)" lower="$(arg q2_min)" upper="$(arg q2_max)" velocity="$(arg qp2_max)"/>
       <dynamics damping="$(arg damping2)" friction="$(arg friction2)"/>
   </joint>
 
+   <!-- Junta entre link2 y link3 -->
+  <joint name="joint3" type="revolute">
+      <parent link="link2"/>
+      <child link="link3"/>
+      <origin xyz="${a3} 0 ${width3}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="$(arg tau3_max)" lower="$(arg q3_min)" upper="$(arg q3_max)" velocity="$(arg qp3_max)"/>
+      <dynamics damping="$(arg damping3)" friction="$(arg friction3)"/>
+  </joint>
+
   <!--******************* DEFINICIONES DE HERRAMIENTA  *******************-->
   <!-- Terna TOOL0 en el extremo de link2 -->
   <joint name="tool0_joint" type="fixed">
-    <parent link="link2"/>
+    <parent link="link3"/>
     <child link="tool0"/>
     <origin xyz="${a2} 0 0" rpy="0 0 0"/>
   </joint>
@@ -144,6 +179,15 @@
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
   </transmission>
+  <transmission name="motor3_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor3_actuator">
+      <mechanicalReduction>${N2}</mechanicalReduction>
+    </actuator>
+    <joint name="joint3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
 
   <!--******************* CONFIGURACION DE ros2_control *******************-->
   <ros2_control name="GazeboSystem" type="system">
@@ -167,6 +211,22 @@
     </joint>
 
     <joint name="joint2">
+      <command_interface name="position">
+        <param name="min">-3.14</param>
+        <param name="max">3.14</param>
+      </command_interface>    
+      <command_interface name="effort">
+        <param name="min">-100</param>
+        <param name="max">100</param>
+      </command_interface>
+      <state_interface name="position">
+        <param name="initial_value">$(arg q2_ini)</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint3">
       <command_interface name="position">
         <param name="min">-3.14</param>
         <param name="max">3.14</param>

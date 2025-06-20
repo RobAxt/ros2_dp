@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QSlider,
 from PyQt5.QtCore import Qt
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
-JOINT_NAMES = ['joint1', 'joint2']
+JOINT_NAMES = ['joint1', 'joint2', 'joint3']
 LIMIT_MIN = -3.14
 LIMIT_MAX = 3.14
 

@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QSlider,
 from PyQt5.QtCore import Qt
 from std_msgs.msg import Float64MultiArray
 
-JOINT_NAMES = ['joint1', 'joint2']
+JOINT_NAMES = ['joint1', 'joint2', 'joint3']
 TORQUE_MIN = -20.0  # Nm
 TORQUE_MAX = 20.0   # Nm
 
