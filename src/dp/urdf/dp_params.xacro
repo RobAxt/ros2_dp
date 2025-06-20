@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Parámetros del eslabón 0. Cilindro y centro de masa en el centro -->
-  <xacro:property name="mass0" value="1.5"/>
+  <xacro:property name="mass0" value="15"/>
   <xacro:property name="radius0" value="0.05"/> <!-- largo total -->
   <xacro:property name="height0" value="0.04"/>
 
@@ -28,7 +28,7 @@
 
   <!-- Parámetros del eslabón 2. Prisma de sección cuadrada y centro de masa en el centro -->
   <xacro:property name="mass2" value="1.5"/>                    <!-- masa de la barra que modela el eslabón -->
-  <xacro:property name="length2" value="0.22"/>                 <!-- largo total -->
+  <xacro:property name="length2" value="0.165"/>                 <!-- largo total -->
   <xacro:property name="width2" value="0.02"/>                  <!-- ancho de la sección total -->
   <xacro:property name="a2" value="${length2 - width2}"/>       <!-- distancia entre ejes -->
   <xacro:property name="Jm2" value="0.0001"/>                   <!-- inercia del rotor del motor -->
@@ -42,7 +42,7 @@
 
  <!-- Parámetros del eslabón 3. Prisma de sección cuadrada y centro de masa en el centro -->
   <xacro:property name="mass3" value="1.5"/>                    <!-- masa de la barra que modela el eslabón -->
-  <xacro:property name="length3" value="0.22"/>                 <!-- largo total -->
+  <xacro:property name="length3" value="0.11"/>                 <!-- largo total -->
   <xacro:property name="width3" value="0.02"/>                  <!-- ancho de la sección total -->
   <xacro:property name="a3" value="${length3 - width3}"/>       <!-- distancia entre ejes -->
   <xacro:property name="Jm3" value="0.0001"/>                   <!-- inercia del rotor del motor -->
